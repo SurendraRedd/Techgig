@@ -148,9 +148,9 @@ def main():
            #    st.subheader("View the issue")
            # elif task == "Delete Issue":
            #    st.subheader("Delet the issue")
-           user_result = view_all_users()
-           clean_db = pd.DataFrame(user_result,columns=["Username","Password"])
-           st.dataframe(clean_db)
+           # user_result = view_all_users()
+           # clean_db = pd.DataFrame(user_result,columns=["Username","Password"])
+           # st.dataframe(clean_db)
         else:
            st.warning("Incorrect Adhar/Passport/VoterID/Password")
 
