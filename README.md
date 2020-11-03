@@ -8,4 +8,4 @@ Techgig Challenge
 All adults have a right to vote, but this right is not being exercised due to thelimitation of voting in the registered constituency by being physically there.
 
 **Proposed Solution**:
-![](images/Solution.png)
+![](/docs/images/Solution.png)
