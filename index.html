@@ -427,6 +427,38 @@
             worker: "assets/javascripts/worker/search.4ac00218.min.js"
           }, typeof search !== "undefined" && search)
         })
+        
+        var url = 'https://stackwhats.com/assets/js/WhatsAppWidget.js';
+            var s = document.createElement('script');
+            s.type = 'text/javascript';
+            s.async = true;
+            s.src = url;
+            var options = {'enabled':true, 'chatButtonSetting': {
+            'backgroundColor': '#4dc247',
+            'ctaText': '',
+            'borderRadius': '25',
+            'marginLeft': '0',
+            'marginBottom': '50',
+            'marginRight': '50',
+            'position': 'right'
+            }, "brandSetting":{
+                "brandName":"StackWhats",
+                "email":"applicationdevelopment2018@gmail.com",
+                "brandSubTitle":"Typically replies within a day",
+                "brandImg":"https://stackwhats.com/assets/img/stackwhats_logo.png",
+                "welcomeText":"Hi, there! \nHow can I help you?",
+                "backgroundColor":"#0a5f54",
+                "ctaText":"Start Chat",
+                "borderRadius":"25",
+                "autoShow":false,
+                "phoneNumber":"919916429983"
+                }
+            };
+            s.onload = function() {
+            CreateWhatsappChatWidget(options);
+            };
+            var x = document.getElementsByTagName('script')[0];
+            x.parentNode.insertBefore(s, x);
       </script>
       
     
