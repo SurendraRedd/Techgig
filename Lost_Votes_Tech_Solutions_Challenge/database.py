@@ -28,14 +28,12 @@ def add_userdata(conn: Connection,username,password):
 	conn.commit()
 
 def login_user(conn: Connection,username,password):
-  c.execute('SELECT * FROM userstable WHERE username =? AND password = ?',(username,password))
-  data = c.fetchall()
-  return data
+    c.execute('SELECT * FROM userstable WHERE username =? AND password = ?',(username,password))
+    return c.fetchall()
 
 def view_all_users(conn: Connection):
-  c.execute('SELECT * FROM userstable')
-  data = c.fetchall()
-  return data
+    c.execute('SELECT * FROM userstable')
+    return c.fetchall()
 
 def create_table(conn: Connection):
 	c.execute('CREATE TABLE IF NOT EXISTS blogtable(author TEXT,title TEXT,article TEXT,postdate DATE)')
@@ -45,25 +43,21 @@ def add_data(conn: Connection,author, title, article, postdate):
 	conn.commit()
 
 def view_all_posts(conn: Connection):
-	c.execute('SELECT * FROM blogtable')
-	data = c.fetchall()
-	return data
+    c.execute('SELECT * FROM blogtable')
+    return c.fetchall()
 
 def view_all_titles(conn: Connection):
-	c.execute('SELECT DISTINCT title FROM blogtable')
-	data = c.fetchall()
-	return data
+    c.execute('SELECT DISTINCT title FROM blogtable')
+    return c.fetchall()
 
 def get_blog_by_title(conn: Connection,title):
-	c.execute('SELECT * FROM blogtable WHERE title="{}"'.format(title))
-	data = c.fetchall()
-	return data
+    c.execute(f'SELECT * FROM blogtable WHERE title="{title}"')
+    return c.fetchall()
 
 def get_blog_by_author(conn: Connection,author):
-	c.execute('SELECT * FROM blogtable WHERE author="{}"'.format(author))
-	data = c.fetchall()
-	return data
+    c.execute(f'SELECT * FROM blogtable WHERE author="{author}"')
+    return c.fetchall()
 
 def delete_data(conn: Connection,title):
-	c.execute('DELETE FROM blogtable WHERE title="{}"'.format(title))
-	conn.commit()
+    c.execute(f'DELETE FROM blogtable WHERE title="{title}"')
+    conn.commit()

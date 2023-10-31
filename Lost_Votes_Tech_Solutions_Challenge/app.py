@@ -22,7 +22,7 @@ st.beta_set_page_config(
     )
 
 def main():
-	
+
     """Lost_Votes_Tech_Solutions_Challenge"""
     #st.title("Lost Votes Tech Solutions Challenge")
     st.markdown(html_temp, unsafe_allow_html=True)
@@ -36,8 +36,8 @@ def main():
 	}
 	</style>
 	""",
-	    unsafe_allow_html=True,
-	)
+        unsafe_allow_html=True,
+    )
 
     choice = st.sidebar.selectbox("Menu", menu)
 
@@ -50,29 +50,30 @@ def main():
         st.image(img, width=750, caption="Solution")
 
     elif choice == "Login":
-      st.subheader("**Please Login to avail the vote!**")
+        st.subheader("**Please Login to avail the vote!**")
 
-      username = st.sidebar.text_input("Adhar/Passport/VoterID")
-      password = st.sidebar.text_input("Password",type='password')
-    
-      if st.sidebar.checkbox("Login"):
-        #create_usertable()
-        hashed_pswd = make_hashes(password)
-        result = login_user(conn,username,check_hashes(password,hashed_pswd))
-        if result:
-           st.success("Logged In as {}".format(username))
-           # task = st.selectbox("Issue",["Add New Issue","View Issue","Delete Issue"])
-           # if task == "Add New Issue":
-           #    st.subheader("Create New issue")
-           # elif task == "View Issue":
-           #    st.subheader("View the issue")
-           # elif task == "Delete Issue":
-           #    st.subheader("Delet the issue")
-           user_result = view_all_users()
-           clean_db = pd.DataFrame(user_result,columns=["Username","Password"])
-           st.dataframe(clean_db)
-        else:
-           st.warning("Incorrect Adhar/Passport/VoterID/Password")
+        username = st.sidebar.text_input("Adhar/Passport/VoterID")
+        password = st.sidebar.text_input("Password",type='password')
+
+        if st.sidebar.checkbox("Login"):
+            #create_usertable()
+            hashed_pswd = make_hashes(password)
+            if result := login_user(
+                conn, username, check_hashes(password, hashed_pswd)
+            ):
+                st.success(f"Logged In as {username}")
+                # task = st.selectbox("Issue",["Add New Issue","View Issue","Delete Issue"])
+                # if task == "Add New Issue":
+                #    st.subheader("Create New issue")
+                # elif task == "View Issue":
+                #    st.subheader("View the issue")
+                # elif task == "Delete Issue":
+                #    st.subheader("Delet the issue")
+                user_result = view_all_users()
+                clean_db = pd.DataFrame(user_result,columns=["Username","Password"])
+                st.dataframe(clean_db)
+            else:
+                st.warning("Incorrect Adhar/Passport/VoterID/Password")
 
     elif choice == "SignUp":
       st.subheader("Create New Account")
